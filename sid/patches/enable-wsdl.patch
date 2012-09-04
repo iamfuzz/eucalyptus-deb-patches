@@ -1,0 +1,48 @@
+--- a/cluster/Makefile.orig	2012-06-18 22:10:36.857983494 -0400
++++ b/cluster/Makefile	2012-06-18 22:11:25.965984372 -0400
+@@ -35,11 +35,11 @@
+ 	rm -rf generated
+ 	mkdir -p generated
+ 	@echo Generating client stubs
+-	sh $(WSDL2C) -uri $(CCWSDL) -g -d adb -u -uw -f -o generated | grep -v 'the classpath'
++	java -classpath /usr/share/java/wsdl2c.jar:/usr/share/java/wsdl4j.jar:/usr/share/java/commons-logging-1.1.1.jar:/usr/share/java/backport-util-concurrent.jar:/usr/share/java/xalan2.jar org.apache.axis2.wsdl.WSDL2C -uri $(CCWSDL) -g -d adb -u -uw -f -o generated
+ 	@echo Generating NCclient stubs
+-	sh $(WSDL2C) -uri $(NCWSDL) -g -d adb -u -uw -f -o generated | grep -v 'the classpath'
++	java -classpath /usr/share/java/wsdl2c.jar:/usr/share/java/wsdl4j.jar:/usr/share/java/commons-logging-1.1.1.jar:/usr/share/java/backport-util-concurrent.jar:/usr/share/java/xalan2.jar org.apache.axis2.wsdl.WSDL2C -uri $(NCWSDL) -g -d adb -u -uw -f -o generated
+ 	@echo Generating server stubs
+-	sh $(WSDL2C) -uri $(CCWSDL) -sd -ss -d adb -u -uw -f -o generated | grep -v 'the classpath'
++	java -classpath /usr/share/java/wsdl2c.jar:/usr/share/java/wsdl4j.jar:/usr/share/java/commons-logging-1.1.1.jar:/usr/share/java/backport-util-concurrent.jar:/usr/share/java/xalan2.jar org.apache.axis2.wsdl.WSDL2C -uri $(CCWSDL) -sd -ss -d adb -u -uw -f -o generated
+ 	@echo Adding marshalling calls to server stubs
+ #	../tools/add_marshalling.pl generated/axis2_skel_*.c generated/axis2_svc_skel_*.c
+ 	../tools/add_marshalling.pl generated/axis2_skel_*.c 
+--- a/node/Makefile.orig	2012-06-18 22:08:25.933981153 -0400
++++ b/node/Makefile	2012-06-18 22:10:28.809983350 -0400
+@@ -34,12 +34,12 @@
+ 	@echo Generating server stubs
+ 	rm -rf generated
+ 	mkdir -p generated
+-	sh $(WSDL2C) -uri $(NCWSDL) -sd -ss -d adb -u -uw -f -o generated | grep -v 'the classpath'
++	java -classpath /usr/share/java/wsdl2c.jar:/usr/share/java/wsdl4j.jar:/usr/share/java/commons-logging-1.1.1.jar:/usr/share/java/backport-util-concurrent.jar:/usr/share/java/xalan2.jar org.apache.axis2.wsdl.WSDL2C -uri $(NCWSDL) -sd -ss -d adb -u -uw -f -o generated
+ 	@echo Adding marshalling calls to server stubs
+ #	../tools/add_marshalling.pl generated/axis2_skel_*.c generated/axis2_svc_skel_*.c
+ 	../tools/add_marshalling.pl generated/axis2_skel_*.c 
+ 	@echo Generating client stubs
+-	sh $(WSDL2C) -uri $(NCWSDL) -g -d adb -u -uw -f -o generated | grep -v 'the classpath'
++	java -classpath /usr/share/java/wsdl2c.jar:/usr/share/java/wsdl4j.jar:/usr/share/java/commons-logging-1.1.1.jar:/usr/share/java/backport-util-concurrent.jar:/usr/share/java/xalan2.jar org.apache.axis2.wsdl.WSDL2C -uri $(NCWSDL) -g -d adb -u -uw -f -o generated
+ #	@echo Compiling the stubs
+ 	cd generated; patch -p1 < ../axis2_svc_generated.patch; cd ../
+ 	@cp ../tools/Makefile.gen generated/Makefile
+--- a/gatherlog/Makefile.orig	2012-06-18 22:06:36.897979203 -0400
++++ b/gatherlog/Makefile	2012-06-18 22:08:17.173980997 -0400
+@@ -24,9 +24,9 @@
+ 	rm -rf generated
+ 	mkdir -p generated
+ 	@echo Generating client stubs
+-	sh $(WSDL2C) -uri $(GLWSDL) -g -d adb -u -uw -f -o generated | grep -v 'the classpath'
++	java -classpath /usr/share/java/wsdl2c.jar:/usr/share/java/wsdl4j.jar:/usr/share/java/commons-logging-1.1.1.jar:/usr/share/java/backport-util-concurrent.jar:/usr/share/java/xalan2.jar org.apache.axis2.wsdl.WSDL2C -uri $(GLWSDL) -g -d adb -u -uw -f -o generated
+ 	@echo Generating server stubs
+-	sh $(WSDL2C) -uri $(GLWSDL) -sd -ss -d adb -u -uw -f -o generated | grep -v 'the classpath'
++	java -classpath /usr/share/java/wsdl2c.jar:/usr/share/java/wsdl4j.jar:/usr/share/java/commons-logging-1.1.1.jar:/usr/share/java/backport-util-concurrent.jar:/usr/share/java/xalan2.jar org.apache.axis2.wsdl.WSDL2C -uri $(GLWSDL) -sd -ss -d adb -u -uw -f -o generated
+ 	@echo Adding marshalling calls to server stubs
+ 	../tools/add_marshalling.pl generated/axis2_skel_*.c
+ 	@cp ../tools/Makefile.gen generated/Makefile

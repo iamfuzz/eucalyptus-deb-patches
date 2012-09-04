@@ -1,0 +1,10 @@
+disable-config-validation.patch
+enable-wsdl.patch
+modify-init-files.patch
+create-var-run-euca.patch
+enable-ivy.patch
+disable-gwt.patch
+modify-clc-makefile.patch
+build-against-new-guava.patch
+fix-postgres-hibernate-issue.patch
+modify-clc-build-file.patch

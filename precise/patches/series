@@ -1,0 +1,3 @@
+modify-init-files.patch
+create-var-run-euca.patch
+modify-config-file.patch

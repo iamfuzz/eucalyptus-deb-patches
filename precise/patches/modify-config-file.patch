@@ -1,0 +1,46 @@
+--- a/tools/eucalyptus.conf	2012-08-14 15:33:37.590426267 +0000
++++ b/tools/eucalyptus.conf	2012-08-14 15:38:51.598432158 +0000
+@@ -3,14 +3,14 @@
+ ###########################################################################
+ 
+ # Where Eucalyptus is installed
+-EUCALYPTUS="not_configured"
++EUCALYPTUS="/"
+ 
+ # This is the username that you would like eucalyptus to run as
+ EUCA_USER="eucalyptus"
+ 
+ # Extra options to pass to the eucalyptus-cloud process, such as log
+ # levels, heap size, or other JVM flags.
+-CLOUD_OPTS=""
++CLOUD_OPTS=" --java-home=/usr/lib/jvm/default-java"
+ 
+ ###########################################################################
+ # STORAGE CONTROLLER (SC) CONFIGURATION
+@@ -81,7 +81,7 @@
+ 
+ # The hypervisor that the NC will interact with in order to manage
+ # virtual machines.  Supported values include "kvm" and "xen".
+-HYPERVISOR="not_configured"
++HYPERVISOR="kvm"
+ 
+ # The following three options determine whether KVM uses Virtio for
+ # specific types of I/O with instances.  These options only affect the
+@@ -133,7 +133,7 @@
+ 
+ # The directory where the NC will store instances' root filesystems,
+ # ephemeral storage, and cached copies of images.
+-INSTANCE_PATH="not_configured"
++INSTANCE_PATH="/var/lib/eucalyptus/instances"
+ 
+ # If euca-bundle-upload, euca-check-bucket, or euca-delete-bundle do
+ # not appear in the NC's search PATH then specify their locations here.
+@@ -177,7 +177,7 @@
+ # network interfaces should attach.  A physical interface that can reach
+ # the CC must be attached to this bridge.
+ # Networking modes: System, Static, Managed (No VLAN)
+-VNET_BRIDGE="xenbr0"
++VNET_BRIDGE="br0"
+ 
+ # A map of MAC addresses to IP addresses that Eucalyptus should allocate
+ # to instances when running in Static mode.  Separate MAC addresses and

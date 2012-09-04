@@ -1,0 +1,21 @@
+--- a/clc/build.xml.orig	2012-06-11 14:05:46.230648646 -0400
++++ b/clc/build.xml	2012-06-11 14:14:09.938657654 -0400
+@@ -61,7 +61,7 @@
+   ~ Author: chris grzegorczyk grze@eucalyptus.com
+   -->
+ 
+-<project name="eucalyptus" basedir=".">
++<project xmlns:ivy="antlib:org.apache.ivy.ant" name="eucalyptus" basedir=".">
+ 	<property environment="localenv" />
+ 	<property name="euca.home.0" value="${localenv.EUCALYPTUS}" />
+ 	<condition property="euca.home" value="/opt/eucalyptus" else="${localenv.EUCALYPTUS}">
+@@ -103,6 +103,9 @@
+ 		</sequential>
+ 	</macrodef>
+ 	<!--================================== build targets ==================================-->
++        <target name="resolve" description="--> retrieve dependencies with ivy">
++          <ivy:retrieve />
++        </target>
+ 	<target name="build">
+ 		<ant dir="." inheritall="false" target="build-all" />
+ 		<ant dir="." inheritall="false" target="jar" />

@@ -1,0 +1,39 @@
+Description: Add force-reload option to init scripts
+Author: Brian Thomason <brian.thomason@eucalyptus.com>
+
+--- eucalyptus-3.0.999beta1.orig/tools/eucalyptus-cloud.in
++++ eucalyptus-3.0.999beta1/tools/eucalyptus-cloud.in
+@@ -390,6 +390,9 @@ case "$1" in
+ 	$0 stop
+ 	$0 start
+ 	;;
++  force-reload)
++	restart
++	;;
+   status)
+ 	if do_status ; then
+ 		echo "$DESC are running"
+--- eucalyptus-3.0.999beta1.orig/tools/eucalyptus-nc.in
++++ eucalyptus-3.0.999beta1/tools/eucalyptus-nc.in
+@@ -459,6 +459,9 @@ case "$1" in
+ 		fi
+ 	fi
+ 	;;
++  force-reload)
++	restart
++	;;
+   status)
+ 	if do_status ; then
+ 		echo "NC is running"
+--- eucalyptus-3.0.999beta1.orig/tools/eucalyptus-cc.in
++++ eucalyptus-3.0.999beta1/tools/eucalyptus-cc.in
+@@ -537,6 +537,9 @@ case "$1" in
+ 		fi
+ 	fi
+   	;;
++  force-reload)
++	restart
++	;;
+   cleanrestart)
+ 	if [ "$VERBOSE" != no ]; then
+ 		if [ "$WE_HAVE_LSB" = "Y" ]; then

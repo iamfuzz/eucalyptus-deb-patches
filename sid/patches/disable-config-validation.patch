@@ -1,0 +1,14 @@
+Description: Disable config validation as it bombs with the Preice version of hibernate validator
+Author: Brian Thomason <brian.thomason@canonical.com>
+
+--- a/tools/eucalyptus.conf.bak	2012-05-01 12:14:43.407761934 -0400
++++ b/tools/eucalyptus.conf	2012-05-01 12:19:01.739766783 -0400
+@@ -10,7 +10,7 @@
+ 
+ # Extra options to pass to the eucalyptus-cloud process, such as log
+ # levels, heap size, or other JVM flags.
+-CLOUD_OPTS=""
++CLOUD_OPTS=" -Djbosscache.config.validate=false"
+ 
+ ###########################################################################
+ # STORAGE CONTROLLER (SC) CONFIGURATION

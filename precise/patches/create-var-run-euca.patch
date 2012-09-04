@@ -1,0 +1,42 @@
+--- a/tools/eucalyptus-cloud.in.orig	2012-05-17 11:26:37.024384764 -0700
++++ b/tools/eucalyptus-cloud.in	2012-05-17 11:31:40.291785074 -0700
+@@ -319,6 +319,11 @@
+ 
+ case "$1" in
+   start)
++	if [ ! -e /var/run/eucalyptus ]; then
++		mkdir -p /var/run/eucalyptus
++		chown eucalyptus:eucalyptus /var/run/eucalyptus
++ 	fi
++
+ 	if [ "$VERBOSE" != no ]; then
+ 		if [ "$WE_HAVE_LSB" = "Y" ]; then
+ 			log_daemon_msg "Starting $DESC" "$NAME"
+--- a/tools/eucalyptus-cc.in.orig	2012-05-17 11:28:40.395685023 -0700
++++ b/tools/eucalyptus-cc.in	2012-05-17 11:32:01.103865866 -0700
+@@ -382,6 +382,11 @@
+ 
+ case "$1" in
+   start)
++	if [ ! -e /var/run/eucalyptus ]; then
++		mkdir -p /var/run/eucalyptus
++		chown eucalyptus:eucalyptus /var/run/eucalyptus
++ 	fi
++
+ 	if [ "$VERBOSE" != no ]; then
+ 		if [ "$WE_HAVE_LSB" = "Y" ]; then
+ 			log_daemon_msg "Starting $DESC" "$NAME"
+--- a/tools/eucalyptus-nc.in.orig	2012-05-17 11:28:47.751665273 -0700
++++ b/tools/eucalyptus-nc.in	2012-05-17 11:31:41.471789319 -0700
+@@ -379,6 +379,11 @@
+ 
+ case "$1" in
+   start)
++	if [ ! -e /var/run/eucalyptus ]; then
++		mkdir -p /var/run/eucalyptus
++		chown eucalyptus:eucalyptus /var/run/eucalyptus
++ 	fi
++
+ 	if [ "$VERBOSE" != no ]; then
+ 		if [ "$WE_HAVE_LSB" = "Y" ]; then
+ 			log_daemon_msg "Starting $DESC" "$NAME"
